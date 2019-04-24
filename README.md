@@ -1,5 +1,5 @@
 
-#简易脚手架工具
+# 简易脚手架工具
 
 ## 工具介绍
  > 这是基于webpack + vue-cli，并添加常用loader（sass-loader，等常用包），用于前端构建vue项目的脚手架。
@@ -16,8 +16,8 @@
 ```
 ### 工具使用方法：
 ``` bash
- > 安装： 可以全局安装  npm npm i vue-tmp-cli -g
- > 在任意文件夹下运行  ameicli init  或 ameicli init (项目名)
- > 根据步骤创建webpack vue 项目
+ > 1.安装： 可以全局安装  npm npm i vue-tmp-cli -g
+ > 2.在任意文件夹下运行  ameicli init  或 ameicli init (项目名)
+ > 3.根据步骤创建webpack vue 项目
 
 ```
