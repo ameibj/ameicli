@@ -2,7 +2,10 @@
 # 简易脚手架工具
 
 ## 工具介绍
+ > ***注*** 目前根据公司内部使用的个人开发习惯的脚手架配置
  > 这是基于webpack + vue-cli，并添加常用loader（sass-loader，等常用包），用于前端构建vue项目的脚手架。
+ > 可以构建vue spa应用 和 multipage应用（带完善中）
+ > 模板地址：https://github.com/ameibj/my-vuetmp-cli/ （切换分支查看 spa 和multi）
 
 ### 项目依赖的包
 ``` bash

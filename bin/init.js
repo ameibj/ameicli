@@ -47,12 +47,14 @@ function getTemps(projectName) {
 // 下载模板
 function downloadTemplate(projectName) {
     if (!fs.existsSync(projectName)) {
+        typeof projectName === 'string' ? projectName :projectName = 'demo';
+      //  console.log( (typeof projectName) === 'string')
         inquirer.prompt([
             {
                 type: 'input',
                 name: 'name',
                 message: '请输入项目名称',
-                default: 'demo'
+                default: projectName
             },
             {
                 type: 'input',
@@ -65,7 +67,7 @@ function downloadTemplate(projectName) {
                 message: '输入项目作者'
             }
         ]).then((answers) => {
-            if(fs.existsSync(answers.name)){
+            if (fs.existsSync(answers.name)) {
                 console.log(symbols.error, chalk.red(`${answers.name} 项目已存在`))
                 return;
             }
@@ -74,7 +76,7 @@ function downloadTemplate(projectName) {
             // git 模板地址 赋值解构（模板地址）
             let {path: downloadUrl} = temps;
             // 项目名称
-            let name = answers.name;ce
+            let name = answers.name;
             spinner.start();
             download(downloadUrl, name, (err) => {
                 if (err) {
