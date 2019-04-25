@@ -47,8 +47,8 @@ function getTemps(projectName) {
 // 下载模板
 function downloadTemplate(projectName) {
     if (!fs.existsSync(projectName)) {
-        typeof projectName === 'string' ? projectName :projectName = 'demo';
-      //  console.log( (typeof projectName) === 'string')
+        typeof projectName === 'string' ? projectName : projectName = 'demo';
+        //  console.log( (typeof projectName) === 'string')
         inquirer.prompt([
             {
                 type: 'input',
