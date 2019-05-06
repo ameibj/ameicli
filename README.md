@@ -21,7 +21,8 @@
 ``` bash
  > 1.安装： 可以全局安装 npm i vue-tmp-cli -g
  > 2.在任意文件夹下运行  ameicli init  或 ameicli init (项目名)
- > 3.根据步骤创建webpack vue 项目
- > 4.在项目目录下，安装环境依赖并启动项目  npm install 下载环境依赖包
+ > 3.根据步骤创建webpack vue 项目（到这里同webpack + vuecli 构建方式一样）
+ > 4.安装项目依赖：在项目目录下  npm install 下载环境依赖包
+ > 5.运行项目： npm run dev （spa 提示会启动0.0.0.0:8080 的一个项目。localhost:8080 或 本机ip+端口 192.168.1.22:8080）
 
 ```
