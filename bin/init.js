@@ -1,6 +1,6 @@
 // 模板列表
-const templates = require('./_templates')
-
+// const templates = require('./_templates')
+let templates = null;
 // 命令行交互
 const inquirer = require('inquirer');
 
@@ -22,32 +22,52 @@ let tempList = [];
 let temps = {};
 
 module.exports = function (projectName) {
-    getTemps(projectName);
+    downLoadGitTmp(projectName)
 }
 
-function getTemps(projectName) {
+
+function downLoadGitTmp(projectName) {
+    loadTmp();
+    downLoadTmp(tempList,projectName);
+}
+
+function loadTmp() {
+    const tmpUrl = 'https://github.com:ameibj/my-vuetmp-cli#master';
+    download(tmpUrl, 'bin/', (err) => {
+        if (err) {
+            console.log(` ${chalk.red(err)}`);
+        }
+    })
+    // 模板列表
+    templates = require('./_templates');
+    //  console.log(templates)
     for (let key in templates) {
         tempList.push(key);
     }
+    return tempList
+}
+
+function downLoadTmp(tempList, projectName) {
     inquirer.prompt([
         {
             type: 'list',
             name: 'template',
-            message: '请输入模板名称',
+            message: '请输入或选择模板名称',
             choices: tempList
         }
     ]).then((answers) => {
-        temps.name = answers.template
+        temps.name = answers.template;
         temps.path = templates[answers.template].downloadUrl;
     }).then(() => {
         downloadTemplate(projectName)
     })
 }
 
+
 // 下载模板
 function downloadTemplate(projectName) {
     if (!fs.existsSync(projectName)) {
-        typeof projectName === 'string' ? projectName : projectName = 'demo';
+        projectName && typeof projectName === 'string' ? projectName : projectName = 'demo';
         //  console.log( (typeof projectName) === 'string')
         inquirer.prompt([
             {
@@ -75,9 +95,11 @@ function downloadTemplate(projectName) {
             const spinner = ora('正在下载模板...');
             // git 模板地址 赋值解构（模板地址）
             let {path: downloadUrl} = temps;
+
             // 项目名称
             let name = answers.name;
             spinner.start();
+
             download(downloadUrl, name, (err) => {
                 if (err) {
                     spinner.fail();

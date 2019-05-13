@@ -1,6 +1,6 @@
 {
   "name": "vue-tmp-cli",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "基于vuecli + webpack的spa脚手架，包含常用loader的集成",
   "main": "index.js",
   "keywords":[
